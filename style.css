@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // Place charity: water logo in /public or /src/assets
 import logo from '../assets/charitywater-logo.png';
+import CTAButton from './CTAButton';
+
+const facts = [
+  "771 million people lack access to clean water.",
+  "1 in 10 people worldwide don’t have clean water close to home.",
+  "Women and girls spend 200 million hours every day collecting water.",
+  // Add more facts as needed
+];
 
 export default function Header() {
+  const [fact, setFact] = useState(facts[0]);
+  useEffect(() => {
+    setFact(facts[round % facts.length]);
+  }, [round]);
   return (
     <header
       style={{
@@ -19,185 +31,78 @@ export default function Header() {
         WordFlow
       </h1>
     </header>
+    <div className="water-fact-card">
+      <strong>💧 Water Fact:</strong>
+      <p>{fact}</p>
+    </div>
   );
 }
 
 body {
-  background: url('/assets/water-ripples.jpg') center/cover no-repeat fixed;
-  /* Or use a subtle SVG/PNG texture for water ripples */
-  filter: blur(2px); /* If you want to blur the background image */
+    /* ...existing code... */
+    background: linear-gradient(135deg, #ffe4ec 0%, #c8e6ff 100%);
+    color: #4a4a4a;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-h1 {
-    color: #00796b;
+header, nav, footer {
+    background: #f9e7fe;
+    /* ...existing code... */
 }
 
-p {
-    font-size: 1.2rem;
-}
-
-ul {
-    background: #b2ebf2;
+button, .btn {
+    background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+    color: #4a4a4a;
+    border: none;
     border-radius: 8px;
-    padding: 1rem 2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    max-width: 500px;
-}
-
-li {
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-}
-
-strong {
-    color: #004d40;
-}
-
-.game-container {
-    background: #ffffffcc;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    padding: 2rem;
-    margin-top: 2rem;
-    max-width: 400px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.game-info {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 1rem;
+    padding: 10px 24px;
     font-weight: bold;
-    color: #01579b;
+    box-shadow: 0 2px 8px rgba(200, 230, 255, 0.2);
+    transition: background 0.3s;
 }
 
-.word-chain {
-    min-height: 48px;
-    width: 100%;
-    background: #e1f5fe;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+button:hover, .btn:hover {
+    background: linear-gradient(90deg, #fcb69f 0%, #a1c4fd 100%);
 }
 
-#wordForm {
-    display: flex;
-    width: 100%;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+.card, .panel, .section {
+    background: #fffbe7;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(255, 200, 221, 0.15);
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-#wordInput {
-    flex: 1;
-    padding: 0.5rem;
-    border-radius: 4px;
-    border: 1px solid #b3e5fc;
-    font-size: 1rem;
+h1, h2, h3, h4 {
+    color: #7f8ff4;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5em;
+    /* ...existing code... */
 }
 
-#wordForm button {
-    background: #0288d1;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
+a {
+    color: #ffb6b9;
+    text-decoration: none;
 }
 
-#wordForm button:hover {
-    background: #01579b;
+a:hover {
+    color: #fcd5ce;
+    text-decoration: underline;
 }
 
-#message {
-    min-height: 24px;
-    color: #d32f2f;
-    margin-bottom: 0.5rem;
+/* Add pastel accent circles for vibrance */
+.pastel-accent {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    z-index: 0;
 }
+.pastel-accent.accent1 { width: 200px; height: 200px; background: #a8edea; top: 10%; left: 5%; }
+.pastel-accent.accent2 { width: 150px; height: 150px; background: #fed6e3; top: 60%; right: 10%; }
+.pastel-accent.accent3 { width: 100px; height: 100px; background: #fcb69f; bottom: 10%; left: 40%; }
 
-#waterFact {
-    color: #00796b;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-    min-height: 20px;
-}
-
-.jug-animation {
-    width: 60px;
-    height: 100px;
-    background: linear-gradient(to top, #4fc3f7 60%, transparent 40%);
-    border-radius: 0 0 30px 30px / 0 0 60px 60px;
-    margin-top: 1.5rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
-    transition: background 0.5s;
-}
-
-#dailyChallengeBtn {
-    margin-bottom: 0.5rem;
-    background: #43a047;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-#dailyChallengeBtn:hover {
-    background: #2e7031;
-}
-
-#dailyLabel {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.leaderboard {
-    margin-top: 2rem;
-    width: 100%;
-    background: #e3f2fd;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(33,150,243,0.08);
-    font-size: 1rem;
-}
-
-.leaderboard h2 {
-    color: #1976d2;
-    margin-top: 0;
-    font-size: 1.1rem;
-}
-
-.leaderboard-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.leaderboard-list li {
-    padding: 0.25rem 0;
-    border-bottom: 1px solid #bbdefb;
-}
-
-.leaderboard-list li:last-child {
-    border-bottom: none;
-}
-
-#currentPlayerLabel {
-    font-size: 1rem;
-}
+/* ...existing code... */
 
 .water-fact-card {
   background: #e0f7fa;
@@ -206,6 +111,34 @@ strong {
   margin: 1em 0;
   color: #0077c2;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Make sure html and body take up the full viewport */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main game container fills the viewport and centers content */
+#game-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9; /* Or your background image/color */
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+  #game-container {
+    padding: 0.5rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -240,3 +173,191 @@ export default function Score({ points }) {
 
 <!-- Add to your public/index.html or in your main HTML file -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Lato:400,700|Open+Sans:400,700&display=swap" rel="stylesheet">
+
+import React from 'react';
+
+export default function CTAButton({ text = "Learn More" }) {
+  return (
+    <a
+      href="https://www.charitywater.org/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: '#FFC700',
+        color: '#222',
+        padding: '0.75em 2em',
+        borderRadius: 8,
+        fontWeight: 'bold',
+        textDecoration: 'none',
+        margin: '1em 0',
+        display: 'inline-block'
+      }}
+    >
+      {text}
+    </a>
+  );
+}
+
+export function GameOver() {
+  return (
+    <div className="game-over">
+      <h2>Thanks for playing!</h2>
+      <p>
+        Want to help bring clean water to communities in need?
+      </p>
+      <CTAButton text="Donate to charity: water" />
+      {/* Optionally, add a QR code image here */}
+      {/* <img src="/assets/charitywater-qr.png" alt="Donate QR code" /> */}
+    </div>
+  );
+}
+
+/* Hide any element that is just a ? in a floating box */
+button, div {
+  /* Example: */
+}
+.help-widget,
+.help-btn,
+.floating-help,
+#help-widget,
+#help-btn {
+  display: none !important;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.3; /* Optional: makes it subtle */
+  pointer-events: none;
+}
+#game-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9; /* Or your background image/color */
+  box-sizing: border-box;
+  padding: 2rem;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+  #game-container {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 1rem;
+        max-width: 98vw;
+    }
+    .game-info {
+        font-size: 0.95rem;
+    }
+    .word-chain {
+        font-size: 1rem;
+    }
+}
+
+import React from 'react';
+
+export default function Score({ points }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', fontSize: '1.2em' }}>
+      {/* Water drop icon next to score */}
+      <span role="img" aria-label="water drop" style={{ marginRight: 8 }}>💧</span>
+      Score: {points}
+    </div>
+  );
+}
+
+// For milestones/achievements, use icons like:
+// <span role="img" aria-label="jerry can">🛢️</span>
+// <span role="img" aria-label="well">⛲</span>
+// <span role="img" aria-label="hands holding water">👐💧</span>
+
+<!-- Add to your public/index.html or in your main HTML file -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Lato:400,700|Open+Sans:400,700&display=swap" rel="stylesheet">
+
+import React from 'react';
+
+export default function CTAButton({ text = "Learn More" }) {
+  return (
+    <a
+      href="https://www.charitywater.org/"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        background: '#FFC700',
+        color: '#222',
+        padding: '0.75em 2em',
+        borderRadius: 8,
+        fontWeight: 'bold',
+        textDecoration: 'none',
+        margin: '1em 0',
+        display: 'inline-block'
+      }}
+    >
+      {text}
+    </a>
+  );
+}
+
+export function GameOver() {
+  return (
+    <div className="game-over">
+      <h2>Thanks for playing!</h2>
+      <p>
+        Want to help bring clean water to communities in need?
+      </p>
+      <CTAButton text="Donate to charity: water" />
+      {/* Optionally, add a QR code image here */}
+      {/* <img src="/assets/charitywater-qr.png" alt="Donate QR code" /> */}
+    </div>
+  );
+}
+
+.bubble {
+    background: #f5f6fa;
+    border-radius: 32px;
+    box-shadow: 0 4px 24px rgba(200, 230, 255, 0.18);
+    padding: 32px 24px;
+    margin: 32px 0;
+    position: relative;
+    z-index: 1;
+    border: 2px solid #ececec;
+}
+
+// Highlight important words
+.highlight, strong {
+    color: #ffb6b9;
+    font-weight: 900;
+    background: #fff0f6;
+    border-radius: 8px;
+    padding: 2px 8px;
+    font-size: 1.08em;
+}
+
+.scramble-word {
+    font-size: 5rem;
+    font-weight: 1000;
+    color: #4a3aff;
+    letter-spacing: 0.22em;
+    background: #e3f6fd;
+    border-radius: 32px;
+    padding: 40px 64px;
+    margin: 48px auto 32px auto;
+    display: inline-block;
+    box-shadow: 0 12px 48px rgba(74,58,255,0.14);
+    text-align: center;
+    text-transform: uppercase;
+    border: 4px solid #b2bfff;
+}

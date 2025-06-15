@@ -9,6 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
+  <div id="game-container">
     <header class="app-header" style="background: #f7c948; color: #0077c2; padding: 1em;">
       <span role="img" aria-label="water drop">💧</span>
       <span style="font-weight: bold; font-size: 2em; margin-left: 0.5em;">WordFlow</span>
@@ -21,12 +22,15 @@
         A word chain game where clean water is the theme, and every word keeps the flow going!
     </p>
     <ul>
-        <li>🎮 <strong>Game Mechanics:</strong></li>
-        <li>Start with a random 4–6 letter word.</li>
-        <li>Each new word must start with the last letter of the previous word.</li>
-        <li>60-second timer or 10-turn limit (or both!).</li>
-        <li>Fun water-themed animations (e.g. the word chain fills up a virtual jug).</li>
-        <li>Water fact after every round or milestone (e.g. "Every $40 brings clean water to one person").</li>
+         <section id="game-mechanics" style="max-width: 600px; margin: 2em auto;">
+      <h2 style="font-weight: bold; margin-bottom: 0.5em;">Game Mechanics</h2>
+      <ul style="list-style-type: disc; padding-left: 1.5em;">
+        <li><strong>Word Chain:</strong> Players must enter a word that starts with the last letter of the previous word.</li>
+        <li><strong>No Repeats:</strong> Words cannot be reused in the same game.</li>
+        <li><strong>Timer or Points:</strong> Players are either timed or earn points for each valid word, depending on the selected mode.</li>
+        <li><strong>Water Facts:</strong> After every few valid words, a water fact is displayed.</li>
+        <li><strong>Milestones:</strong> Special icons or achievements appear when players reach certain word counts or streaks.</li>
+      </ul>
     </ul>
     <div class="game-container">
         <div class="game-info">
@@ -60,7 +64,22 @@
         </div>
         <button id="shareBtn" style="margin-top:1rem;">Share My Score</button>
     </div>
+    <div id="fun-fact" style="margin: 2rem 0; padding: 1rem; background: #e0f7fa; border-radius: 8px; color: #0288d1; font-weight: bold;">
+      Fun Fact will appear here!
+    </div>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="background-image" alt="background" />
     <script src="game.js"></script>
+    <script>
+      const facts = [
+        "1 in 10 people lack access to clean water.",
+        "Women and girls spend 200 million hours every day collecting water.",
+        "Every $1 invested in clean water can yield $4–$12 in economic returns.",
+        "Unsafe water kills more people each year than all forms of violence, including war."
+      ];
+      // Pick a random fact
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+      document.getElementById('fun-fact').textContent = randomFact;
+    </script>
     <script>
       import React, { useState, useEffect } from 'react';
 
@@ -110,5 +129,6 @@
         );
       }
     </script>
+  </div>
 </body>
 </html>
