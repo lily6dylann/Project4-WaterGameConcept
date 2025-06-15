@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// Place charity: water logo in /public or /src/assets
 import logo from '../assets/charitywater-logo.png';
 import CTAButton from './CTAButton';
 
@@ -38,71 +37,71 @@ export default function Header() {
   );
 }
 
+/* General Styles */
 body {
-    /* ...existing code... */
-    background: linear-gradient(135deg, #ffe4ec 0%, #c8e6ff 100%);
-    color: #4a4a4a;
-    font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffe4ec 0%, #c8e6ff 100%);
+  color: #4a4a4a;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-header, nav, footer {
-    background: #f9e7fe;
-    /* ...existing code... */
+/* Header Styles */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-button, .btn {
-    background: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
-    color: #4a4a4a;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 24px;
-    font-weight: bold;
-    box-shadow: 0 2px 8px rgba(200, 230, 255, 0.2);
-    transition: background 0.3s;
+.header img {
+  height: 40px;
 }
 
-button:hover, .btn:hover {
-    background: linear-gradient(90deg, #fcb69f 0%, #a1c4fd 100%);
+.header h1 {
+  font-size: 2rem;
+  margin: 0;
 }
 
-.card, .panel, .section {
-    background: #fffbe7;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(255, 200, 221, 0.15);
-    padding: 20px;
-    margin-bottom: 20px;
+/* Button Styles */
+.cta-button {
+  background: #00b4d8;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-h1, h2, h3, h4 {
-    color: #7f8ff4;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.5em;
-    /* ...existing code... */
+.cta-button:hover {
+  background: #0077b6;
 }
 
-a {
-    color: #ffb6b9;
-    text-decoration: none;
+/* Score Styles */
+.score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
 }
 
-a:hover {
-    color: #fcd5ce;
-    text-decoration: underline;
+/* Game Over Styles */
+.game-over {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-/* Add pastel accent circles for vibrance */
-.pastel-accent {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.25;
-    z-index: 0;
-}
-.pastel-accent.accent1 { width: 200px; height: 200px; background: #a8edea; top: 10%; left: 5%; }
-.pastel-accent.accent2 { width: 150px; height: 150px; background: #fed6e3; top: 60%; right: 10%; }
-.pastel-accent.accent3 { width: 100px; height: 100px; background: #fcb69f; bottom: 10%; left: 40%; }
-
-/* ...existing code... */
+/* Add more CSS as needed for your app */
 
 .water-fact-card {
   background: #e0f7fa;
