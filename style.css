@@ -1,0 +1,242 @@
+import React from 'react';
+// Place charity: water logo in /public or /src/assets
+import logo from '../assets/charitywater-logo.png';
+
+export default function Header() {
+  return (
+    <header
+      style={{
+        background: '#FFC700', // charity: water yellow
+        color: '#222',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '1em'
+      }}
+    >
+      {/* Logo goes here (top-left) */}
+      <img src={logo} alt="charity: water logo" style={{ height: 40, marginRight: 16 }} />
+      <h1 style={{ fontFamily: "'Montserrat', 'Lato', 'Open Sans', sans-serif", margin: 0 }}>
+        WordFlow
+      </h1>
+    </header>
+  );
+}
+
+body {
+  background: url('/assets/water-ripples.jpg') center/cover no-repeat fixed;
+  /* Or use a subtle SVG/PNG texture for water ripples */
+  filter: blur(2px); /* If you want to blur the background image */
+}
+
+h1 {
+    color: #00796b;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+ul {
+    background: #b2ebf2;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    max-width: 500px;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+strong {
+    color: #004d40;
+}
+
+.game-container {
+    background: #ffffffcc;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 2rem;
+    margin-top: 2rem;
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #01579b;
+}
+
+.word-chain {
+    min-height: 48px;
+    width: 100%;
+    background: #e1f5fe;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+#wordForm {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#wordInput {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #b3e5fc;
+    font-size: 1rem;
+}
+
+#wordForm button {
+    background: #0288d1;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#wordForm button:hover {
+    background: #01579b;
+}
+
+#message {
+    min-height: 24px;
+    color: #d32f2f;
+    margin-bottom: 0.5rem;
+}
+
+#waterFact {
+    color: #00796b;
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    min-height: 20px;
+}
+
+.jug-animation {
+    width: 60px;
+    height: 100px;
+    background: linear-gradient(to top, #4fc3f7 60%, transparent 40%);
+    border-radius: 0 0 30px 30px / 0 0 60px 60px;
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.15);
+    transition: background 0.5s;
+}
+
+#dailyChallengeBtn {
+    margin-bottom: 0.5rem;
+    background: #43a047;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#dailyChallengeBtn:hover {
+    background: #2e7031;
+}
+
+#dailyLabel {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.leaderboard {
+    margin-top: 2rem;
+    width: 100%;
+    background: #e3f2fd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+    font-size: 1rem;
+}
+
+.leaderboard h2 {
+    color: #1976d2;
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.leaderboard-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.leaderboard-list li {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #bbdefb;
+}
+
+.leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+#currentPlayerLabel {
+    font-size: 1rem;
+}
+
+.water-fact-card {
+  background: #e0f7fa;
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+  color: #0077c2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 600px) {
+    .game-container {
+        padding: 1rem;
+        max-width: 98vw;
+    }
+    .game-info {
+        font-size: 0.95rem;
+    }
+    .word-chain {
+        font-size: 1rem;
+    }
+}
+
+import React from 'react';
+
+export default function Score({ points }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', fontSize: '1.2em' }}>
+      {/* Water drop icon next to score */}
+      <span role="img" aria-label="water drop" style={{ marginRight: 8 }}>💧</span>
+      Score: {points}
+    </div>
+  );
+}
+
+// For milestones/achievements, use icons like:
+// <span role="img" aria-label="jerry can">🛢️</span>
+// <span role="img" aria-label="well">⛲</span>
+// <span role="img" aria-label="hands holding water">👐💧</span>
+
+<!-- Add to your public/index.html or in your main HTML file -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Lato:400,700|Open+Sans:400,700&display=swap" rel="stylesheet">

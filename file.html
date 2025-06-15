@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Water Chain Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <header class="app-header" style="background: #f7c948; color: #0077c2; padding: 1em;">
+      <span role="img" aria-label="water drop">💧</span>
+      <span style="font-weight: bold; font-size: 2em; margin-left: 0.5em;">WordFlow</span>
+      <div style="font-size: 1em; margin-top: 0.5em;">
+        <em>Every word helps spread awareness for clean water!</em>
+      </div>
+    </header>
+    <h1>The Water Chain Game</h1>
+    <p>
+        A word chain game where clean water is the theme, and every word keeps the flow going!
+    </p>
+    <ul>
+        <li>🎮 <strong>Game Mechanics:</strong></li>
+        <li>Start with a random 4–6 letter word.</li>
+        <li>Each new word must start with the last letter of the previous word.</li>
+        <li>60-second timer or 10-turn limit (or both!).</li>
+        <li>Fun water-themed animations (e.g. the word chain fills up a virtual jug).</li>
+        <li>Water fact after every round or milestone (e.g. "Every $40 brings clean water to one person").</li>
+    </ul>
+    <div class="game-container">
+        <div class="game-info">
+            <span id="score">Score: 0</span>
+            <span id="streak">Streak: 0</span>
+            <span id="timer">60s</span>
+        </div>
+        <button id="dailyChallengeBtn">🌱 Daily Challenge</button>
+        <span id="dailyLabel" style="display:none; color:#388e3c; font-weight:bold;">Daily Challenge Mode</span>
+        <div class="word-chain" id="wordChain">
+            <!-- Words will appear here -->
+        </div>
+        <form id="wordForm" autocomplete="off">
+            <input type="text" id="wordInput" placeholder="Enter next word..." maxlength="12" required>
+            <button type="submit">Submit</button>
+        </form>
+        <form id="usernameForm" style="margin-bottom:1rem;">
+            <input type="text" id="usernameInput" placeholder="Enter your name" maxlength="16" required>
+            <button type="submit">Set Name</button>
+        </form>
+        <div id="message"></div>
+        <div id="waterFact"></div>
+        <div class="jug-animation" id="jugAnimation"></div>
+        <div id="leaderboard" class="leaderboard"></div>
+        <div style="margin-bottom:0.5rem;">
+            <label>
+                <input type="checkbox" id="multiplayerToggle">
+                Multiplayer (Pass-the-Device)
+            </label>
+            <span id="currentPlayerLabel" style="margin-left:1rem; color:#0288d1; font-weight:bold; display:none;"></span>
+        </div>
+        <button id="shareBtn" style="margin-top:1rem;">Share My Score</button>
+    </div>
+    <script src="game.js"></script>
+    <script>
+      import React, { useState, useEffect } from 'react';
+
+      const facts = [
+        "1 in 10 people lack access to clean water.",
+        "Women and girls spend 200 million hours every day collecting water.",
+        "Every $1 invested in clean water can yield $4–$12 in economic returns.",
+        "Unsafe water kills more people each year than all forms of violence, including war."
+      ];
+
+      export default function WaterFact({ round }) {
+        // Rotate fact every round
+        const factIndex = round % facts.length;
+        return (
+          <div className="water-fact-card">
+            <h4>💧 Water Fact</h4>
+            <p>{facts[factIndex]}</p>
+          </div>
+        );
+      }
+    </script>
+    <script>
+      import React from 'react';
+
+      export default function GameOver() {
+        return (
+          <div className="game-over">
+            <h2>Game Over!</h2>
+            <p>Thanks for playing and helping spread awareness about clean water.</p>
+            <a
+              href="https://www.charitywater.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-button"
+              style={{
+                background: '#f7c948',
+                color: '#0077c2',
+                padding: '0.75em 1.5em',
+                borderRadius: '6px',
+                textDecoration: 'none',
+                fontWeight: 'bold'
+              }}
+            >
+              Learn more about charity: water
+            </a>
+          </div>
+        );
+      }
+    </script>
+</body>
+</html>
