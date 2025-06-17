@@ -51,15 +51,14 @@ body {
 
 /* Bubble-like main content sections */
 .bubble-section {
-  background: #e0f7fa;
+  background: #e3f6fc;
   border-radius: 2em;
   box-shadow: 0 0 15px rgba(0,0,0,0.08);
   padding: 2em 2.5em;
-  margin: 2em 0;
+  margin: 2em 0;      /* This centers the section horizontally */
   max-width: 600px;
   width: 90%;
-  text-align: center;
-  display: block; /* Added */
+  text-align: center;    /* This centers all text inside, including the title */
 }
 
 /* Pastel, bold, large highlighted words */
@@ -357,18 +356,21 @@ export function GameOver() {
   padding: 2em;
   border-radius: 0 0 10px 10px;
   max-width: 600px;
-  margin: 2em auto;
+  margin: 2em auto;      /* This centers the section horizontally */
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;    /* This centers all text inside, including the title */
 }
 
 .waterflow-title {
-  font-size: 1.2rem;      /* Small and consistent size */
+  font-size: 0.9rem;
   font-weight: bold;
   color: #0077c2;
   margin-bottom: 1em;
-  text-align: center;
+  width: 100%;
   margin-left: 0;
   margin-right: 0;
+  display: block;
+  text-align: center;    /* This ensures the title itself is centered */
 }
 
 #game-mechanics h2 {
