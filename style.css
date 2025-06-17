@@ -59,6 +59,7 @@ body {
   max-width: 600px;
   width: 90%;
   text-align: center;
+  display: block; /* Added */
 }
 
 /* Pastel, bold, large highlighted words */
@@ -196,16 +197,18 @@ input[type="text"], input[type="search"] {
 
 /* Make sure html and body take up the full viewport */
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Main game container fills the viewport and centers content */
 #game-container {
+  margin-top: 0;
+  padding-top: 0;
   min-height: 100vh;
-  min-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -340,7 +343,7 @@ export function GameOver() {
 
 .main-title {
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.5em; /* Reduced from 2em */
   margin-left: 0.5em;
 }
 
@@ -359,11 +362,13 @@ export function GameOver() {
 }
 
 .waterflow-title {
-  font-size: 1.5em;
+  font-size: 1.2rem;      /* Small and consistent size */
   font-weight: bold;
   color: #0077c2;
   margin-bottom: 1em;
   text-align: center;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #game-mechanics h2 {
