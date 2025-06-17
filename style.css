@@ -39,11 +39,93 @@ export default function Header() {
 
 /* General Styles */
 body {
-  background: linear-gradient(135deg, #ffe4ec 0%, #c8e6ff 100%);
-  color: #4a4a4a;
-  font-family: 'Segoe UI', sans-serif;
+  background: #f2f6ff;
+  font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', sans-serif;
+  color: #374151;
   margin: 0;
-  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Bubble-like main content sections */
+.bubble-section {
+  background: #e0f7fa;
+  border-radius: 2em;
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  padding: 2em 2.5em;
+  margin: 2em 0;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+}
+
+/* Pastel, bold, large highlighted words */
+.highlight {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #6ec6ff;
+    background: #e0e7ff;
+    padding: 0.2em 0.6em;
+    border-radius: 1em;
+    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.08);
+    letter-spacing: 0.02em;
+    display: inline-block;
+}
+
+/* Headings with pastel shadow, bold and easy to read */
+h1, h2, h3 {
+    font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 800;
+    color: #6ec6ff;
+    text-shadow: 2px 2px #d0eaff;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.01em;
+}
+
+/* Pastel buttons with rounded corners and hover effect */
+button, .btn {
+    padding: 0.7em 2em;
+    background-color: #6ec6ff;
+    border: none;
+    border-radius: 1em;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(110, 198, 255, 0.15);
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 1em;
+}
+
+button:hover, .btn:hover {
+    background-color: #a2e6f8;
+    color: #374151;
+    transform: translateY(2px);
+}
+
+/* Input styling */
+input[type="text"], input[type="search"] {
+    padding: 0.7em 1em;
+    border-radius: 1em;
+    border: none;
+    width: 220px;
+    margin-bottom: 1em;
+    font-size: 1.1em;
+    background: #f2f6ff;
+    box-shadow: 0 1px 4px rgba(110, 198, 255, 0.08);
+}
+
+/* Subtle word history or info area */
+.word-history, .info-area {
+    margin-top: 1em;
+    color: #555;
+    font-size: 1em;
+    background: #e0e7ff;
+    border-radius: 1em;
+    padding: 0.7em 1em;
+    box-shadow: 0 1px 4px rgba(110, 198, 255, 0.08);
 }
 
 /* Header Styles */
@@ -211,123 +293,10 @@ export function GameOver() {
   );
 }
 
-/* Hide any element that is just a ? in a floating box */
-button, div {
-  /* Example: */
-}
-.help-widget,
-.help-btn,
-.floating-help,
-#help-widget,
-#help-btn {
-  display: none !important;
-}
-
-.background-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  opacity: 0.3; /* Optional: makes it subtle */
-  pointer-events: none;
-}
-#game-container {
-  min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #f9f9f9; /* Or your background image/color */
-  box-sizing: border-box;
-  padding: 2rem;
-}
-
-/* Responsive adjustments for mobile */
-@media (max-width: 600px) {
-  #game-container {
-    padding: 0.5rem;
-  }
-}
-
-@media (max-width: 600px) {
-    .game-container {
-        padding: 1rem;
-        max-width: 98vw;
-    }
-    .game-info {
-        font-size: 0.95rem;
-    }
-    .word-chain {
-        font-size: 1rem;
-    }
-}
-
-import React from 'react';
-
-export default function Score({ points }) {
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', fontSize: '1.2em' }}>
-      {/* Water drop icon next to score */}
-      <span role="img" aria-label="water drop" style={{ marginRight: 8 }}>💧</span>
-      Score: {points}
-    </div>
-  );
-}
-
-// For milestones/achievements, use icons like:
-// <span role="img" aria-label="jerry can">🛢️</span>
-// <span role="img" aria-label="well">⛲</span>
-// <span role="img" aria-label="hands holding water">👐💧</span>
-
-<!-- Add to your public/index.html or in your main HTML file -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Lato:400,700|Open+Sans:400,700&display=swap" rel="stylesheet">
-
-import React from 'react';
-
-export default function CTAButton({ text = "Learn More" }) {
-  return (
-    <a
-      href="https://www.charitywater.org/"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        background: '#FFC700',
-        color: '#222',
-        padding: '0.75em 2em',
-        borderRadius: 8,
-        fontWeight: 'bold',
-        textDecoration: 'none',
-        margin: '1em 0',
-        display: 'inline-block'
-      }}
-    >
-      {text}
-    </a>
-  );
-}
-
-export function GameOver() {
-  return (
-    <div className="game-over">
-      <h2>Thanks for playing!</h2>
-      <p>
-        Want to help bring clean water to communities in need?
-      </p>
-      <CTAButton text="Donate to charity: water" />
-      {/* Optionally, add a QR code image here */}
-      {/* <img src="/assets/charitywater-qr.png" alt="Donate QR code" /> */}
-    </div>
-  );
-}
-
 .bubble {
     background: #f5f6fa;
     border-radius: 32px;
-    box-shadow: 0 4px 24px rgba(200, 230, 255, 0.18);
+    box-shadow: 0 4px 24px rgba(200,230,255,0.18);
     padding: 32px 24px;
     margin: 32px 0;
     position: relative;
@@ -359,4 +328,53 @@ export function GameOver() {
     text-align: center;
     text-transform: uppercase;
     border: 4px solid #b2bfff;
+}
+
+.app-header {
+  background: #f7c948;
+  color: #0077c2;
+  padding: 1em;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.main-title {
+  font-weight: bold;
+  font-size: 2em;
+  margin-left: 0.5em;
+}
+
+.subtitle {
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+
+.bubble-section {
+  background: #e3f6fc;
+  padding: 2em;
+  border-radius: 0 0 10px 10px;
+  max-width: 600px;
+  margin: 2em auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.waterflow-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #0077c2;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+#game-mechanics h2 {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.game-mechanics-list {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin: 0 auto;
+  max-width: 500px;
 }

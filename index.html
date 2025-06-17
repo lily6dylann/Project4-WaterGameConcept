@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>The Water Chain Game</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <meta charset="UTF-8">
+  <title>The Water Chain Game</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
   <div id="game-container">
-    <header class="app-header" style="background: #f7c948; color: #0077c2; padding: 1em;">
+    <header class="app-header">
       <span role="img" aria-label="water drop">💧</span>
-      <span style="font-weight: bold; font-size: 2em; margin-left: 0.5em;">WordFlow</span>
-      <div style="font-size: 1em; margin-top: 0.5em;">
+      <span class="main-title">WordFlow</span>
+      <div class="subtitle">
         <em>Every word helps spread awareness for clean water!</em>
       </div>
     </header>
-    <h1>The Water Chain Game</h1>
-    <p>
-        A word chain game where clean water is the theme, and every word keeps the flow going!
-    </p>
-    <ul>
-         <section id="game-mechanics" style="max-width: 600px; margin: 2em auto;">
-      <h2 style="font-weight: bold; margin-bottom: 0.5em;">Game Mechanics</h2>
-      <ul style="list-style-type: disc; padding-left: 1.5em;">
-        <li><strong>Word Chain:</strong> Players must enter a word that starts with the last letter of the previous word.</li>
-        <li><strong>No Repeats:</strong> Words cannot be reused in the same game.</li>
-        <li><strong>Timer or Points:</strong> Players are either timed or earn points for each valid word, depending on the selected mode.</li>
-        <li><strong>Water Facts:</strong> After every few valid words, a water fact is displayed.</li>
-        <li><strong>Milestones:</strong> Special icons or achievements appear when players reach certain word counts or streaks.</li>
-      </ul>
-    </ul>
+    <div class="bubble-section">
+      <div class="waterflow-title">Word Flow Game</div>
+      <section id="game-mechanics">
+        <h2>Game Mechanics</h2>
+        <ul class="game-mechanics-list">
+          <li><strong>Word Chain:</strong> Players must enter a word that starts with the last letter of the previous word.</li>
+          <li><strong>No Repeats:</strong> Words cannot be reused in the same game.</li>
+          <li><strong>Timer or Points:</strong> Players are either timed or earn points for each valid word, depending on the selected mode.</li>
+          <li><strong>Water Facts:</strong> After every few valid words, a water fact is displayed.</li>
+          <li><strong>Milestones:</strong> Special icons or achievements appear when players reach certain word counts or streaks.</li>
+        </ul>
+      </section>
+    </div>
     <div class="game-container">
         <div class="game-info">
             <span id="score">Score: 0</span>
@@ -132,3 +130,123 @@
   </div>
 </body>
 </html>
+
+<style>
+body {
+    background: #f8fafc;
+    font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', sans-serif;
+    color: #374151;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Bubble-like main content sections */
+.bubble-section {
+    background: #ffe4ec; /* pastel pink */
+    border-radius: 2em;
+    box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    padding: 2em 2.5em;
+    margin: 2em 0;
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Pastel, bold, large highlighted words */
+.highlight {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #ffb7b2; /* pastel coral */
+    background: #fff0f6; /* very light pink */
+    padding: 0.2em 0.6em;
+    border-radius: 1em;
+    box-shadow: 0 4px 16px rgba(255, 183, 178, 0.08);
+    letter-spacing: 0.02em;
+    display: inline-block;
+}
+
+/* Headings with pastel shadow, bold and easy to read */
+h1, h2, h3 {
+    font-family: 'Segoe UI', 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 800;
+    color: #ffb7b2;
+    text-shadow: 2px 2px #ffe4ec;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.01em;
+}
+
+/* Pastel buttons with rounded corners and hover effect */
+button, .btn {
+    padding: 0.7em 2em;
+    background-color: #ffd6e0; /* pastel pink */
+    border: none;
+    border-radius: 1em;
+    color: #374151;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 214, 224, 0.15);
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 1em;
+}
+
+button:hover, .btn:hover {
+    background-color: #c8e6e6; /* pastel teal */
+    color: #374151;
+    transform: translateY(2px);
+}
+
+/* Input styling */
+input[type="text"], input[type="search"] {
+    padding: 0.7em 1em;
+    border-radius: 1em;
+    border: none;
+    width: 220px;
+    margin-bottom: 1em;
+    font-size: 1.1em;
+    background: #fff0f6;
+    box-shadow: 0 1px 4px rgba(255, 183, 178, 0.08);
+}
+
+/* Subtle word history or info area */
+.word-history, .info-area {
+    margin-top: 1em;
+    color: #555;
+    font-size: 1em;
+    background: #fff0f6;
+    border-radius: 1em;
+    padding: 0.7em 1em;
+    box-shadow: 0 1px 4px rgba(255, 183, 178, 0.08);
+    display: inline-block;
+}
+
+.waterflow-title {
+    font-size: 6vw;
+    font-weight: 900;
+    color: #ffb7b2;
+    text-shadow: 4px 4px #ffe4ec, 0 8px 32px #ffb7b244;
+    margin: 0.5em 0 0.2em 0;
+    letter-spacing: 0.06em;
+    text-align: center;
+    width: 100vw;
+    line-height: 1.1;
+    word-break: break-word;
+}
+
+.game-mechanics-list {
+    margin: 1em auto 0 auto;
+    max-width: 500px;
+    text-align: left;
+    font-size: 1.2em;
+    color: #374151;
+    padding-left: 1.2em;
+}
+
+.game-mechanics-list li {
+    margin-bottom: 0.6em;
+    line-height: 1.5;
+}
+</style>
