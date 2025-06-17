@@ -51,13 +51,13 @@ body {
 
 /* Bubble-like main content sections */
 .bubble-section {
-  background: #e3f6fc;
-  border-radius: 2em;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
-  padding: 2em 2.5em;
-  margin: 2em 0;      /* This centers the section horizontally */
+  width: 100%;
   max-width: 600px;
-  width: 90%;
+  margin: 2em auto;
+  background: #e3f6fc;
+  padding: 2em;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   text-align: center;    /* This centers all text inside, including the title */
 }
 
@@ -205,13 +205,12 @@ html, body {
 
 /* Main game container fills the viewport and centers content */
 #game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers all children horizontally */
   margin-top: 0;
   padding-top: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: #f9f9f9; /* Or your background image/color */
   box-sizing: border-box;
   padding: 2rem;
@@ -352,11 +351,12 @@ export function GameOver() {
 }
 
 .bubble-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 2em auto;
   background: #e3f6fc;
   padding: 2em;
   border-radius: 0 0 10px 10px;
-  max-width: 600px;
-  margin: 2em auto;      /* This centers the section horizontally */
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   text-align: center;    /* This centers all text inside, including the title */
 }
@@ -366,11 +366,8 @@ export function GameOver() {
   font-weight: bold;
   color: #0077c2;
   margin-bottom: 1em;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
   display: block;
-  text-align: center;    /* This ensures the title itself is centered */
+  text-align: center;
 }
 
 #game-mechanics h2 {
